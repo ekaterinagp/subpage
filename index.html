@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="apple-touch-icon"
+    sizes="180x180"
+    href="http://valsdottir.net/kea/08-exam/2ndsem_exam/img/apple-touch-icon.png">
+  <link rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="http://valsdottir.net/kea/08-exam/2ndsem_exam/img/favicon-32x32.png">
+  <link rel="icon"
+    type="image/png"
+    sizes="16x16"
+    href="http://valsdottir.net/kea/08-exam/2ndsem_exam/img/favicon-16x16.png">
+  <link rel="manifest"
+    href="http://valsdottir.net/kea/08-exam/2ndsem_exam/img/site.webmanifest">
+  <link rel="mask-icon"
+    href="http://valsdottir.net/kea/08-exam/2ndsem_exam/img/safari-pinned-tab.svg"
+    color="#5bbad5">
+  <link rel="shortcut icon"
+    href="http://valsdottir.net/kea/08-exam/2ndsem_exam/img/favicon.ico">
+  <meta name="msapplication-TileColor"
+    content="#ffc40d">
+  <meta name="msapplication-config"
+    content="http://valsdottir.net/kea/08-exam/2ndsem_exam/img/browserconfig.xml">
+  <meta name="theme-color"
+    content="#ffffff">
+  <meta name="description"
+    content="Sveinn Snær is a queer Icelandic illustrator and artist based in Bournemouth (United Kingdom), who challenges society’s aesthetic ideals with his artwork.">
+
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+  <title>Sveinn Snær Illustration</title>
+  <link rel="stylesheet"
+    href="style.css"
+    type="text/css">
+</head>
+
+<body>
+  <div class="container hiddenloader">
+    <img class="venus"
+      src="img/venus.png"
+      alt="venus">
+  </div>
+  <header class="appbar shadow">
+    <a href="index.html"><img src="img/Logo_yellow.svg"
+      class="menulogo" alt="logo"></a>
+    <ul class="deskmenu">
+      <li><a class="active_cat"
+          href="index.html">HOME</a></li>
+      <li><a href="artwork.html">ARTWORK</a></li>
+      <li><a href="about.html">ABOUT</a></li>
+      <li><a href="contact.html">CONTACT</a></li>
+    </ul>
+
+    <svg class="menuIcon"
+      viewBox="0 0 100 100">
+      <rect class="myrect" x="10" y="10" width="80" height="10"/>
+      <rect class="myrect" x="10" y="30" width="80" height="10"/>
+      <rect class="myrect" x="10" y="50" width="80" height="10"/>
+    </svg>
+
+
+  </header>
+  <aside class="menu hidden">
+    <ul>
+      <li><a href="index.html"
+          class="active">HOME</a></li>
+      <li><a href="artwork.html">ARTWORK</a></li>
+      <li><a href="about.html">ABOUT</a></li>
+      <li><a href="contact.html">CONTACT</a></li>
+    </ul>
+  </aside>
+
+  <div class="page hiddenloader">
+    <div id="frontpage">
+      <img src="animation/testing0.jpg"
+        alt="animation"
+        id="anim">
+      <img src="animation/testing-mobile0.jpg"
+        alt="animation"
+        id="anim-mobile">
+      <img src="animation/test-tablet0.jpg"
+        alt="animation"
+        id="anim-tablet">
+
+      <img src="img/Logo_yellow.svg"
+        class="logo"
+        alt="logo">
+      <h2 class="front">Illustration</h2>
+
+
+      <a href="#recentworks">
+        <div class="dot">
+        </div>
+      </a>
+    </div>
+
+    <div id="recentworks">
+      <h1 class="rw">RECENT WORKS</h1>
+
+      <section id="recentpiece">
+        <template id="recenttemp">
+           <a class="more" href="subpage.html?id=">  <div class="recentitem shadow">
+          <div class="img_hover"> <img class="artworkimg" src="img/no-image.png" alt="artwork"></div>
+            
+             <div class="hover_content"> <h2 class="title">TITLE</h2>
+              <h2 class="medium">MEDIUM</h2></div>
+            </div></a>
+            </template>
+      </section>
+
+
+    </div>
+  </div>
+  <footer>
+    <div>
+      <p class="foot">sveinnsnaer@gmail.com<br> &copy;Sveinn S.
+      </p>
+    </div>
+    <div class="icons">
+      <div class="tooltip"><a href="https://www.facebook.com/SVENillustration/"><img src="img/fb.png" alt="facebook_icon"></a>
+        <span class="tooltiptext">Facebook</span>
+      </div>
+      <div class="tooltip"><a href="https://www.instagram.com/sven_illustration/"><img src="img/inst.png" alt="instagram_icon"></a>
+        <span class="tooltiptext">Instagram</span>
+      </div>
+    </div>
+  </footer>
+  <script src="menu.js"></script>
+  <script src="recentart.js"></script>
+  <script src="anim.js"></script>
+
+</body>
+
+</html>
