@@ -5,7 +5,19 @@ let cartItem = {
   img: "",
   title: "",
   price: 0,
+  type: "",
+  size: "",
 }
+let addBtn = document.querySelector(".add");
+let cartImg = document.querySelector(".cart");
+
+
+addBtn.addEventListener('click', function() {
+  sessionStorage.setItem("cartItem", JSON.stringify(cartItem));
+  cartImg.setAttribute("style", "background-color: red;");
+});
+
+
 
 
 fetch("http://valsdottir.net/kea/07-cms/wordpress/wp-json/wp/v2/artist/" + id + "?_embed")
@@ -19,6 +31,7 @@ function showSingleArt(aArt) {
   document.querySelector(".title-more").innerHTML = aArt.title.rendered;
   document.querySelector(".desc-more").innerHTML = aArt.content.rendered;
   document.querySelector(".medium-more").textContent = aArt.acf.medium;
+  document.querySelector(".size-more").textContent = aArt.acf.size;
   document.querySelector(".price-more span").textContent = aArt.acf.price;
   if (aArt.acf.price == 0) {
     document.querySelector(".price-more").style.display = "none";
@@ -36,14 +49,13 @@ function showSingleArt(aArt) {
     img: aArt._embedded["wp:featuredmedia"][0].media_details.sizes.medium.source_url,
     title: aArt.title.rendered,
     price: aArt.acf.price,
+    type: aArt.acf.medium,
+    size: aArt.acf.size,
   }
 
   console.log('cartItem: ', cartItem);
-  // Store
-  sessionStorage.setItem("cartItem", JSON.stringify(cartItem));
 
-  let retrivedCartItem = JSON.parse(sessionStorage.getItem("cartItem"));
-  console.log('retrivedCartItem: ', retrivedCartItem);
+
 
   //use the second category of the item to fetch similar items (because the first category for each item is All)
   fetchSimilarItems(aArt.categories[1]);
