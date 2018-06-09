@@ -74,26 +74,42 @@
   </div>
   <div class="subpagegrid">
 
-    <a href="cart.html">
-      <div class="cart"><img src="img/cart.png"></div>
-    </a>
-    <div class="subgrid"> <img class="img-more size shadow"
+
+    <div class="cart_number">
+      <a href="cart.html"><img class="cart" src="img/cart.png"
+          alt="buyart">
+          <p class="number">1</p>
+         </a>
+    </div>
+
+    <div class="subgrid">
+      <img id="subImg"
+        class="img-more size shadow"
         src="img/no-image.png"
         alt="illustration">
+      <div id="subModal"
+        class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content"
+          id="imgSub">
+
+      </div>
       <div>
         <div>
           <h1 class="title-more">Title</h1>
           <h2 class="medium-more">Medium</h2>
         </div>
         <p class="desc-more sub"></p>
-        <div class="subsub">
+        <!-- <div class="subsub"> -->
 
-          <p class="price-more sub">&pound;
-            <span></span>
-          </p>
+        <p class="price-more sub">
+
           <span></span>
-          <p class="size-more"></p>
-        </div>
+          &pound;
+        </p>
+        <span></span>
+        <p class="size-more"></p>
+        <!-- </div> -->
         <button class="add">Add to cart</button>
         <!-- <p class="know-more">If you are interested in purchasing a piece or want to know more, please contact me <a class="to-cont"
             href="contact.html">here</a></p> -->

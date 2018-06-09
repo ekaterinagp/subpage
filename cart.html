@@ -75,31 +75,41 @@
   <div class="cartTotal">
     <section id="cartItems">
       <template id="cartId">
+        <div id="cartDiv">
         <img class="img_cart" src="img/no-image.png" alt="buy art"> 
         <div class="cart_desc"><p class="title_cart">Title</p>
         <p class="type_cart"></p>
+       
         <div class="price_number">
-        <p class="price_cart">Price</p>
+        <p class="price_cart"><span></span>
+          &pound;</p>
         <select id="selector" onchange="selectQ()">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
           </select></div>
         
-        <p class="size_cart">Size</p></div>
-        
+        <p class="size_cart">Size</p>
+        <button class="remove">Remove item</button>
+      </div>
+       
+    </div>
       </template>
+
     </section>
 
     <div class="total">
       <p class="tot">Total:</p>
-      <div class="item_total">
-
+      <div class="item_total"></div>
+      <hr/>
+      <div id="totalsum">
+        <span></span>
+        &pound;
       </div>
-      <div id="totalsum"></div>
 
     </div>
   </div>
+
 
 
   <footer>

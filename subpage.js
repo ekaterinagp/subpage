@@ -1,6 +1,7 @@
 let urlParams = new URLSearchParams(window.location.search);
 let id = urlParams.get("id");
 showLoader();
+
 let cartItem = {
   img: "",
   title: "",
@@ -10,12 +11,24 @@ let cartItem = {
 }
 let addBtn = document.querySelector(".add");
 let cartImg = document.querySelector(".cart");
+let numberOfItem = document.querySelector(".number");
 
-
+checkCart();
 addBtn.addEventListener('click', function() {
   sessionStorage.setItem("cartItem", JSON.stringify(cartItem));
-  cartImg.setAttribute("style", "background-color: red;");
+  checkCart();
 });
+
+function checkCart() {
+  let cartItem = JSON.parse(sessionStorage.getItem("cartItem"));
+  if (cartItem) {
+    numberOfItem.setAttribute("style", "display: block;");
+  } else {
+    numberOfItem.setAttribute("style", "display: none;");
+  }
+
+
+}
 
 
 
@@ -31,8 +44,8 @@ function showSingleArt(aArt) {
   document.querySelector(".title-more").innerHTML = aArt.title.rendered;
   document.querySelector(".desc-more").innerHTML = aArt.content.rendered;
   document.querySelector(".medium-more").textContent = aArt.acf.medium;
-  document.querySelector(".size-more").textContent = aArt.acf.size;
-  document.querySelector(".price-more span").textContent = aArt.acf.price;
+  document.querySelector(".size-more").textContent = "Size: " + aArt.acf.size;
+  document.querySelector(".price-more span").textContent = "Price: " + aArt.acf.price;
   if (aArt.acf.price == 0) {
     document.querySelector(".price-more").style.display = "none";
   }
@@ -88,8 +101,19 @@ function showSingleItem(item) {
   similar.appendChild(clone);
 
 }
+let modal = document.getElementById("subModal");
+let subImg = document.getElementById("subImg");
+let modalImg = document.getElementById("imgSub");
+subImg.onclick = function() {
+  modal.style.display = "block";
+  modalImg.src = this.src;
+}
 
+let span = document.getElementsByClassName("close")[0];
 
+span.onclick = function() {
+  modal.style.display = "none";
+}
 
 function goBack() {
   window.history.back();
