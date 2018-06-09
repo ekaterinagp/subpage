@@ -59,6 +59,7 @@ function showSingleArt(aArt) {
   };
 
   cartItem = {
+    id: aArt.id,
     img: aArt._embedded["wp:featuredmedia"][0].media_details.sizes.medium.source_url,
     title: aArt.title.rendered,
     price: aArt.acf.price,

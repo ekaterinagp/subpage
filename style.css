@@ -158,10 +158,15 @@ img {
   transition: opacity 1s;
 }
 
-.item_total,
+.item_total {
+  font-family: "print clearly";
+  font-size: 1.1em;
+}
+
 #totalsum {
   font-family: "print clearly";
   font-size: 1.1em;
+  font-weight: bold;
 }
 
 .hiddenloader {
@@ -204,12 +209,12 @@ button {
   color: #1c3652;
 }
 
-button.remove {
-  font-family: 'jaapokki';
-  background-color: #f4c101;
+.remove {
+  font-family: 'print clearly';
+  /* background-color: #f4c101;
   color: #1c3652;
   width: 7vw;
-  height: 4vh;
+  height: 4vh; */
   cursor: pointer;
 }
 
@@ -613,6 +618,7 @@ select {
   margin-bottom: 10px;
   margin-top: 10px;
   padding: 0;
+  font-family: print clearly;
 }
 
 input[type=email] {
