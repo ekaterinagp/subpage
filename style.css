@@ -138,8 +138,9 @@ img {
 }
 
 .img_cart {
-  width: 20vw;
+  width: 5vw;
   height: auto;
+  justify-self: end;
 }
 
 /*Loader*/
@@ -207,6 +208,7 @@ button {
   font-family: 'jaapokki';
   background-color: #f4c101;
   color: #1c3652;
+  margin-top: 1em;
 }
 
 .remove {
@@ -234,6 +236,11 @@ button {
 h1 {
   padding-top: 3em;
   text-align: center;
+}
+
+h1.hSim {
+  text-align: center;
+  padding-top: 0;
 }
 
 p {
@@ -655,7 +662,7 @@ textarea {
 
 .thanks div p {
   font-size: 1.5em;
-  padding: 0px 20px;
+  padding: 0 3em 0 3em;
 }
 
 .signed {
@@ -779,6 +786,12 @@ iframe {
   .dot {
     top: 85vh;
   }
+  #similar {
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+    grid-gap: 1em;
+    padding: 2em 10em 2em 10em;
+  }
   .title {
     font-size: 2em;
   }
@@ -825,8 +838,8 @@ iframe {
   .modal {
     display: none;
     position: fixed;
-    z-index: 1;
-    padding-top: 100px;
+    z-index: 13;
+    padding-top: 10px;
     left: 0;
     top: 0;
     width: 100%;
@@ -855,7 +868,7 @@ iframe {
   }
   .close {
     position: absolute;
-    top: 80px;
+    top: 10px;
     right: 35px;
     color: #f1f1f1;
     font-size: 40px;
@@ -1012,15 +1025,16 @@ div.form {
   margin: 1em;
 }
 
-#cartDiv {
+.cartDiv {
   display: grid;
   grid-template-columns: 2fr 2fr;
-  padding: 6em;
+  /* padding: 6em; */
+  padding: 6em 3em 0em 5em;
   grid-gap: 2em;
 }
 
 .size {
-  width: 30vw;
+  width: 20vw;
 }
 
 .icons {

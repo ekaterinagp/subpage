@@ -2,27 +2,46 @@ let urlParams = new URLSearchParams(window.location.search);
 let id = urlParams.get("id");
 showLoader();
 
-let cartItem = {
-  img: "",
-  title: "",
-  price: 0,
-  type: "",
-  size: "",
+function createCartItem() {
+  let cartItem = {
+    id: 0,
+    img: "",
+    title: "",
+    price: 0,
+    type: "",
+    size: "",
+  }
+  return cartItem;
 }
+
+let currentCartItem = {};
+
 let addBtn = document.querySelector(".add");
 let cartImg = document.querySelector(".cart");
 let numberOfItem = document.querySelector(".number");
 
 checkCart();
 addBtn.addEventListener('click', function() {
-  sessionStorage.setItem("cartItem", JSON.stringify(cartItem));
+  let cart = JSON.parse(sessionStorage.getItem("cart"));
+  if (cart) {
+    cart.push(currentCartItem);
+    sessionStorage.setItem("cart", JSON.stringify(cart));
+  } else {
+    cart = [];
+    cart.push(currentCartItem);
+    sessionStorage.setItem("cart", JSON.stringify(cart));
+  }
+
   checkCart();
 });
 
 function checkCart() {
-  let cartItem = JSON.parse(sessionStorage.getItem("cartItem"));
-  if (cartItem) {
-    numberOfItem.setAttribute("style", "display: block;");
+  let cart = JSON.parse(sessionStorage.getItem("cart"));
+
+  if ((cart) && (cart.length > 0)) {
+    numberOfItem.innerHTML = cart.length;
+    numberOfItem.setAttribute("style", "display:block;");
+
   } else {
     numberOfItem.setAttribute("style", "display: none;");
   }
@@ -58,28 +77,34 @@ function showSingleArt(aArt) {
     document.querySelector(".img-more").setAttribute("src", aArt._embedded["wp:featuredmedia"][0].media_details.sizes.medium.source_url)
   };
 
-  cartItem = {
-    id: aArt.id,
-    img: aArt._embedded["wp:featuredmedia"][0].media_details.sizes.medium.source_url,
-    title: aArt.title.rendered,
-    price: aArt.acf.price,
-    type: aArt.acf.medium,
-    size: aArt.acf.size,
-  }
-
-  console.log('cartItem: ', cartItem);
 
 
+  let cartItem = createCartItem();
+  cartItem.id = aArt.id;
+  cartItem.img = aArt._embedded["wp:featuredmedia"][0].media_details.sizes.medium.source_url;
+  cartItem.title = aArt.title.rendered;
+  cartItem.price = parseInt(aArt.acf.price);
+  cartItem.type = aArt.acf.medium;
+  cartItem.size = aArt.acf.size;
 
-  //use the second category of the item to fetch similar items (because the first category for each item is All)
+  currentCartItem = cartItem;
+
   fetchSimilarItems(aArt.categories[1]);
-
 }
 
 
 
+
+
+//use the second category of the item to fetch similar items (because the first category for each item is All)
+
+
+
+
+
+
 function fetchSimilarItems(categoryId) {
-  fetch("http://valsdottir.net/kea/07-cms/wordpress/wp-json/wp/v2/artist?_embed&per_page=100" + "&categories=" + categoryId)
+  fetch("http://valsdottir.net/kea/07-cms/wordpress/wp-json/wp/v2/artist?_embed&per_page=3" + "&categories=" + categoryId)
     .then(e => e.json())
     .then(showSimilarItems)
 }
@@ -90,6 +115,9 @@ function showSimilarItems(data) {
 }
 
 function showSingleItem(item) {
+  if (currentCartItem.id === item.id) {
+    return;
+  }
   let template = document.querySelector("#similartemp").content;
   let clone = template.cloneNode(true);
   let similarItem = clone.querySelector(".similaritem");

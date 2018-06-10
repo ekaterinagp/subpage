@@ -27,13 +27,12 @@ function buildMenu(data) {
   fetchGallery();
 }
 
-let page = 1;
-let lookingForData = false;
+
 let categoryIdSelected = null;
 
 
 function fetchGallery() {
-  lookingForData = true;
+
   let urlParams = new URLSearchParams(window.location.search);
   let catid = urlParams.get("category");
   console.log("fetchGallery: catid: ", catid);
