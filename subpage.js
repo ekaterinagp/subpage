@@ -16,6 +16,7 @@ function createCartItem() {
 
 let currentCartItem = {};
 
+
 let addBtn = document.querySelector(".add");
 let cartImg = document.querySelector(".cart");
 let numberOfItem = document.querySelector(".number");
@@ -24,6 +25,7 @@ checkCart();
 addBtn.addEventListener('click', function() {
   let cart = JSON.parse(sessionStorage.getItem("cart"));
   if (cart) {
+    //adds one or more elements to the array cart
     cart.push(currentCartItem);
     sessionStorage.setItem("cart", JSON.stringify(cart));
   } else {
@@ -104,10 +106,12 @@ function showSingleArt(aArt) {
 
 
 function fetchSimilarItems(categoryId) {
-  fetch("http://valsdottir.net/kea/07-cms/wordpress/wp-json/wp/v2/artist?_embed&per_page=3" + "&categories=" + categoryId)
+  fetch("http://valsdottir.net/kea/07-cms/wordpress/wp-json/wp/v2/artist?_embed&per_page=6" + "&categories=" + categoryId)
     .then(e => e.json())
     .then(showSimilarItems)
 }
+
+let countSimilarItems = 0;
 
 function showSimilarItems(data) {
   console.log(data);
@@ -115,7 +119,11 @@ function showSimilarItems(data) {
 }
 
 function showSingleItem(item) {
+  countSimilarItems = countSimilarItems + 1;
   if (currentCartItem.id === item.id) {
+    return;
+  }
+  if (countSimilarItems > 3) {
     return;
   }
   let template = document.querySelector("#similartemp").content;
@@ -130,6 +138,8 @@ function showSingleItem(item) {
   similar.appendChild(clone);
 
 }
+
+
 let modal = document.getElementById("subModal");
 let subImg = document.getElementById("subImg");
 let modalImg = document.getElementById("imgSub");

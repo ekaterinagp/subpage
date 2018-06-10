@@ -38,27 +38,19 @@ function selectQ() {
   let totalPrice = 0;
   let cart = JSON.parse(sessionStorage.getItem("cart"));
   cart.forEach(cartItem => {
-    // let quantity = document.getElementById("selector").value;
-    // console.log("quantity", quantity)
+    //parseInt takes a string and returns a number 
     totalPrice = totalPrice + parseInt(cartItem.price);
 
     let oneItemSum = cartItem.price;
     let oneItemTitle = cartItem.title;
     let template = document.querySelector(".item_total").content;
     let clone = template.cloneNode(true);
-    clone.innerHTML = oneItemTitle + " " + oneItemSum;
+    clone.innerHTML = oneItemTitle + oneItemSum;
 
 
   })
   document.getElementById("totalsum").innerHTML = "Total: " + totalPrice + "&#163;";
 }
-
-
-// review.forEach(function(item, index, object) {
-//   if (item === 'a') {
-//     object.splice(index, 1);
-//   }
-// });
 
 
 
@@ -70,7 +62,6 @@ function removeItem(cartItemId) {
     }
   });
   sessionStorage.setItem("cart", JSON.stringify(cart));
-  // let cartItemElement = document.getElementById("cartItemId");
   let cartItemElement = document.getElementById(cartItemId);
   cartItemElement.remove();
   selectQ();
