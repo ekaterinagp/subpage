@@ -116,3 +116,21 @@ function showTags() {
   //   showhide.style.display = "none";
   // }
 }
+
+let numberOfItem = document.querySelector(".number");
+
+function checkCart() {
+  let cart = JSON.parse(sessionStorage.getItem("cart"));
+
+  if ((cart) && (cart.length > 0)) {
+    numberOfItem.innerHTML = cart.length;
+    numberOfItem.setAttribute("style", "display:block;");
+
+  } else {
+    numberOfItem.setAttribute("style", "display: none;");
+  }
+
+
+}
+
+checkCart();

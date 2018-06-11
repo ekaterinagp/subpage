@@ -119,10 +119,11 @@ function showSimilarItems(data) {
 }
 
 function showSingleItem(item) {
-  countSimilarItems = countSimilarItems + 1;
+
   if (currentCartItem.id === item.id) {
     return;
   }
+  countSimilarItems = countSimilarItems + 1;
   if (countSimilarItems > 3) {
     return;
   }

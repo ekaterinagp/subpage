@@ -24,9 +24,6 @@ if (cart) {
     cartSection.appendChild(clone);
   });
 
-
-  // //init total price
-  // selectQ();
 } else {
   emptyTotal();
 
@@ -35,7 +32,9 @@ if (cart) {
 selectQ();
 
 function selectQ() {
+  console.log("selectQ: run");
   let totalPrice = 0;
+  let sectionTotal = document.getElementById("totalItemsSection");
   let cart = JSON.parse(sessionStorage.getItem("cart"));
   cart.forEach(cartItem => {
     //parseInt takes a string and returns a number 
@@ -43,9 +42,11 @@ function selectQ() {
 
     let oneItemSum = cartItem.price;
     let oneItemTitle = cartItem.title;
-    let template = document.querySelector(".item_total").content;
+    let template = document.querySelector("#totalItemsTemplate").content;
     let clone = template.cloneNode(true);
-    clone.innerHTML = oneItemTitle + oneItemSum;
+    // clone.querySelector(".totalDiv").setAttribute("id", cartItem.id);
+    // clone.querySelector(".totalItemsTitle").innerHTML = oneItemTitle + " " + oneItemSum + "£";
+    sectionTotal.appendChild(clone);
 
 
   })
@@ -64,6 +65,8 @@ function removeItem(cartItemId) {
   sessionStorage.setItem("cart", JSON.stringify(cart));
   let cartItemElement = document.getElementById(cartItemId);
   cartItemElement.remove();
+
+
   selectQ();
 }
 
